@@ -100,6 +100,32 @@ namespace LeetCode
 
             return answer;
         }
+        /*
+         * Two trees are a mirror reflection of each other if:
+         * Their two roots have the same value.
+         * The right subtree of each tree is a mirror reflection of the left subtree of the other tree.
+         */
+        public static bool IsSymmetricTree(TreeNode node)
+        {
+            if (node == null) return false; // guard
+        
+            return IsMirror(node, node);
+        }
+        
+        private static bool IsMirror(TreeNode nodeLeft, TreeNode nodeRight)
+        {
+            //    /   \ outer
+            //     \ /  inner
+        
+            if (nodeLeft == null && nodeRight == null) return true;
+            if (nodeLeft == null || nodeRight == null) return false;
+        
+            var isEqual = nodeLeft.val == nodeRight.val;
+            var isOuterMirror = IsMirror(nodeLeft.left, nodeRight.right);
+            var isInnerMirror = IsMirror(nodeLeft.right, nodeRight.left);
+        
+            return isEqual && isOuterMirror && isInnerMirror;
+        }
     }
     
     public class Test
