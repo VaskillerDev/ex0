@@ -126,6 +126,28 @@ namespace LeetCode
         
             return isEqual && isOuterMirror && isInnerMirror;
         }
+        
+        /*
+         Given the root of a binary tree and an integer targetSum, return true if the tree 
+         has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+         A leaf is a node with no children.
+         */
+        public static bool HasPathSum(TreeNode node, int targetSum, int currentSum = 0)
+        {
+            if (node == null) return false;
+            var isLeaf = node.left == null && node.right == null;
+        
+            currentSum += node.val;
+        
+            if (currentSum == targetSum && isLeaf) return true;
+        
+            bool resL = false;
+            if (node.left != null) resL = HasPathSum(node.left, targetSum, currentSum);
+            bool resR = false;
+            if (node.right != null) resR = HasPathSum(node.right, targetSum, currentSum);
+        
+            return resL || resR;
+        }
     }
     
     public class Test
