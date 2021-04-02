@@ -150,6 +150,25 @@ namespace LeetCode
         }
     }
     
+    public static class PrincipeOfRecursion
+    {
+        public static void ReverseString(char[] s)
+        {
+            int l = 0;
+            int r = s.Length - 1;
+            while (l < r)
+            {
+                var tmp = s[l];
+                s[l] = s[r];
+                s[r] = tmp;
+    
+                ++l;
+                --r;
+            }
+        }
+    
+    }
+    
     public class Test
     {
         [Test]
