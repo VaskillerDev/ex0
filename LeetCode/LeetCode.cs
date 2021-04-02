@@ -166,6 +166,27 @@ namespace LeetCode
                 --r;
             }
         }
+        
+        public static ListNode SwapPairs(ListNode node)
+         {
+            if (node == null) return null;
+            if (node.next == null) return node;
+            
+            var newNode = Swap(node, node.next);
+            if (newNode.next.next != null) newNode.next.next = SwapPairs(newNode.next.next);
+            return newNode;
+         }
+        
+         private static ListNode Swap(ListNode inNode, ListNode postNode)
+         {
+            inNode.next = null;
+            var targetNode = postNode.next;
+        
+            postNode.next = inNode;
+            inNode.next = targetNode;
+            
+            return postNode; 
+         }
     
     }
     
