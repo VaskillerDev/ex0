@@ -187,6 +187,17 @@ namespace LeetCode
             
             return postNode; 
          }
+         
+         public static ListNode ReverseList(ListNode node) 
+         {
+            if (node?.next == null) return node;
+            
+            var newNode = ReverseList(node.next);
+            node.next.next = node;
+            node.next = null;
+            
+            return newNode;
+         }
     
     }
     
