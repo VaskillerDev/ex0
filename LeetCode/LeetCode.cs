@@ -198,6 +198,18 @@ namespace LeetCode
             
             return newNode;
          }
+         
+         public static TreeNode SearchBst(TreeNode node, int val)
+         {
+             if (node == null) return null;
+             if (node.val == val) return node;
+
+             TreeNode res = null;
+             if (node.left != null) res = SearchBst(node.left, val);
+             if (node.right != null && res == null) res = SearchBst(node.right, val);
+
+             return res;
+         }
     
     }
     
