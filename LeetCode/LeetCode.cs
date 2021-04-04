@@ -222,6 +222,19 @@ namespace LeetCode
          
             return Fib(n - 1) + Fib(n - 2); // recurrence relation
          }
+         
+         // Implement pow(x, n), which calculates x raised to the power n (i.e., x^n).
+         public static double Pow(double x, int n, double multiplier = 0, int side = 0)
+         {
+             if (multiplier == 0) multiplier = x;
+             if (side == 0) side = n > 0 ? 1 : -1;
+             if (n == 1) return x;
+
+             _ = side == 1 ? --n : ++n;
+             _ = side == 1 ? x *= multiplier : x /= multiplier;
+
+             return Pow(x, n, multiplier, side);
+         }
     
     }
     
