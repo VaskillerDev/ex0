@@ -250,6 +250,36 @@ namespace LeetCode
     
     }
     
+    public static class BinarySearch
+    {
+        /*
+         Given an array of integers nums which is sorted in ascending order,
+         and an integer target, write a function to search target in nums.
+         If target exists, then return its index. Otherwise, return -1.
+         */
+        public static int Search(int[] nums, int target)
+        {
+            var pivot = 0;
+            var left = 0;
+            var right = nums.Length - 1;
+
+            while (left <= right)
+            {
+                pivot = left + (right - left) / 2;
+                if (nums[pivot] == target) return pivot;
+                if (nums[pivot] > target)
+                {
+                    right = pivot - 1;
+                }
+                else
+                {
+                    left = pivot + 1;
+                }
+            }
+            return -1;
+        }
+    }
+    
     public class Test
     {
         [Test]
