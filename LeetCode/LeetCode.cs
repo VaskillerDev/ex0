@@ -278,6 +278,21 @@ namespace LeetCode
             }
             return -1;
         }
+
+		// Given a non-negative integer x, compute and return the square root of x.
+		// Since the return type is an integer, the decimal digits are truncated, 
+		// and only the integer part of the result is returned.
+        public static double Sqrt(int num)
+        {
+            if (num == 0) return 0;
+            double t;     
+            double squareRoot = num / 2;     
+            do {
+                t = squareRoot;
+                squareRoot = (t + num / t) / 2;
+            } while (t - squareRoot != 0); 
+            return squareRoot;
+        }
     }
     
     public class Test
